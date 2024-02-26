@@ -67,6 +67,21 @@ public class Conn {
         preparedStatement.executeUpdate();
     }
 
+    public static void UpdateDB(int id, String name, String telephone, String email, String tglink, String vklink) throws SQLException
+    {
+        String insert = "UPDATE contacts\n" +
+                        "   SET name = '" + name + "',\n" +
+                        "       telephone = '" + telephone +"',\n" +
+                        "       email = '" + email + "',\n" +
+                        "       tglink = '" + tglink + "',\n" +
+                        "       vklink = '" + vklink + "'"+
+                        "WHERE id = " + id;
+
+        preparedStatement = conn.prepareStatement(insert);
+
+        preparedStatement.executeUpdate();
+    }
+
     public static void DeleteFromDB(String id) throws SQLException
     {
         String insert = "delete from contacts\n" + "WHERE id=" + id;

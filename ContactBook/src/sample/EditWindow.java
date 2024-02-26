@@ -68,7 +68,9 @@ public class EditWindow {
 
     private static void createButton(int id) {
         Button save = new Button();
-        save.setOnMouseClicked(EditWindow::onClickSave);
+        save.setOnMouseClicked(e -> {
+            onClickSave(id, e);
+        });
         save.setText("Save");
         save.setPrefWidth(80);
         save.setPrefHeight(25);
@@ -92,7 +94,7 @@ public class EditWindow {
         pane.getChildren().addAll(save, delete);
     }
 
-    private static void onClickSave(Event e) {
+    private static void onClickSave(int id, Event e) {
         TextField nameField = (TextField) scene.lookup("#nameField");
         String text_nameField = nameField.getText();
         TextField telephoneNumberField = (TextField) scene.lookup("#telephoneNumberField");
@@ -106,7 +108,7 @@ public class EditWindow {
 
         if(!text_nameField.isEmpty()) {
             try {
-                Conn.WriteDB(text_nameField, text_telephoneNumberField, text_emailAddressField, text_tgLinkField, text_vkLinkField);
+                Conn.UpdateDB(id, text_nameField, text_telephoneNumberField, text_emailAddressField, text_tgLinkField, text_vkLinkField);
                 Window.update();
                 System.out.println("записал в таблицу данные");
             } catch (SQLException ex) {

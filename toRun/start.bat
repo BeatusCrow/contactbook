@@ -1,1 +1,0 @@
-"%~dp0\java\bin\java.exe" -Dfile.encoding=UTF-8 -jar "%~dp0\ContactBook.jar"

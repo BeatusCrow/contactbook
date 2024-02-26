@@ -1,2 +1,0 @@
-JAVA_VERSION="21.0.1"
-MODULES="java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.logging java.security.sasl java.naming java.scripting java.transaction.xa java.sql java.sql.rowset jdk.jfr jdk.unsupported"
