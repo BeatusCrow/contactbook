@@ -26,7 +26,7 @@ public class Conn {
 
     public static void createTable() throws SQLException {
         statmt = conn.createStatement();
-        statmt.execute("CREATE TABLE if not exists 'contacts' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'name' TEXT, 'telephone' TEXT, 'email' TEXT);");
+        statmt.execute("CREATE TABLE if not exists 'contacts' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'name' TEXT, 'telephone' TEXT, 'email' TEXT, 'tglink' TEXT, 'vklink' TEXT);");
 
         System.out.println("Таблица создана или уже существует");
     }
@@ -42,23 +42,27 @@ public class Conn {
             String name = resSet.getString("name");
             String telephone = resSet.getString("telephone");
             String email = resSet.getString("email");
-            Row row = new Row(id, name, telephone, email);
+            String tgLink = resSet.getString("tglink");
+            String vkLing = resSet.getString("vklink");
+            Row row = new Row(id, name, telephone, email, tgLink, vkLing);
             row_list.add(row);
         }
 
         return row_list;
     }
 
-    public static void WriteDB(String name, String telephone, String email) throws SQLException
+    public static void WriteDB(String name, String telephone, String email, String tglink, String vklink) throws SQLException
     {
         String insert = "INSERT INTO " + "contacts" + "(" +
-                "name" + "," + "telephone" + "," + "email" + ")" +
-                "VALUES(?,?,?)";
+                "name" + "," + "telephone" + "," + "email" + "," + "tglink"+ "," + "vklink" +")" +
+                "VALUES(?,?,?,?,?)";
 
         preparedStatement = conn.prepareStatement(insert);
         preparedStatement.setString(1, name);
         preparedStatement.setString(2, telephone);
         preparedStatement.setString(3, email);
+        preparedStatement.setString(4, tglink);
+        preparedStatement.setString(5, vklink);
 
         preparedStatement.executeUpdate();
     }

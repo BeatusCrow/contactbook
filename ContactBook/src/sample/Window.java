@@ -29,7 +29,7 @@ public class Window extends Application {
         createAddContactButton();
         createSearchField();
         createScrollBar();
-        scene = new Scene(pane, 574,379);
+        scene = new Scene(pane, 574,415);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Сontact book");
@@ -77,14 +77,14 @@ public class Window extends Application {
             old_value_scroll = new_value_scroll;
             for(Pane row : row_list){
                 row.setLayoutY(row.getLayoutY() - d_value_scroll);
-                row.setVisible(!(row.getLayoutY() < 55));
+                row.setVisible(!(row.getLayoutY() < 54));
             }
         });
         scrollBar.setMax(0);
         scrollBar.setValue(0);
         scrollBar.setVisibleAmount(0);
         scrollBar.setPrefWidth(14);
-        scrollBar.setPrefHeight(379);
+        scrollBar.setPrefHeight(415);
         scrollBar.setLayoutX(560);
 
         pane.getChildren().addAll(scrollBar);
@@ -92,21 +92,23 @@ public class Window extends Application {
 
 
     public static void createRow(Row newrow) {
-        Pane row = newrow.createBodyRow(newrow.getId(), newrow.getName(), newrow.getTelephoneNumber(), newrow.getEmailAddress());
+        Pane row = newrow.createBodyRow(newrow.getId(), newrow.getName(),
+                                        newrow.getTelephoneNumber(), newrow.getEmailAddress(),
+                                        newrow.getTgLink(), newrow.getVkLink());
         row.setLayoutX(11);
         if(row_list.isEmpty()) {
             row.setLayoutY(55-scrollBar.getValue());
-            row.setVisible(!(row.getLayoutY() < 55));
+            row.setVisible(!(row.getLayoutY() < 54));
         }
         else {
             double max_y = row_list.get(row_list.size() - 1).getLayoutY();
-            row.setLayoutY(max_y + 36);
-            row.setVisible(!(row.getLayoutY() < 55));
+            row.setLayoutY(max_y + 72);
+            row.setVisible(!(row.getLayoutY() < 54));
         }
         count_row++;
-        if(count_row > 9) {
-            scrollBar.setMax(scrollBar.getMax() + 36);
-            scrollBar.setVisibleAmount(scrollBar.getMax()/count_row*9);
+        if(count_row > 5) {
+            scrollBar.setMax(scrollBar.getMax() + 72);
+            scrollBar.setVisibleAmount(scrollBar.getMax()/count_row*5);
         }
 
         row_list.add(row);
@@ -116,8 +118,8 @@ public class Window extends Application {
     public static void update() throws SQLException {
         ArrayList<Row> rowList = Conn.ReadDB();
         if(row_list.size() > rowList.size()){
-            if(count_row > 9){
-                scrollBar.setValue(scrollBar.getMax() - (row_list.size() - rowList.size())*36);
+            if(count_row > 5){
+                scrollBar.setValue(scrollBar.getMax() - (row_list.size() - rowList.size())*72);
             }
         }
 
