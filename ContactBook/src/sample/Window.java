@@ -10,6 +10,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -135,8 +136,6 @@ public class Window extends Application {
         for(Row row: rowList) {
             createRow(row);
         }
-        System.out.println("Текущее значение scrollBar -> " + scrollBar.getValue());
-        System.out.println("Количество номерво -> " + count_row);
     }
 
 }
