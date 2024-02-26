@@ -1,0 +1,13 @@
+test = test massage
+successfully-connected = The connection to the database is established!
+unsuccessfully-connected = The connection to the database has not been established!
+table-created = The table has been created or already exists!
+table-not-created = An error occurred during the creation of the table!
+successfully-read = The data from the table has been successfully received!
+unsuccessfully-read = An error occurred while retrieving data from the table!
+successfully-write = The data has been successfully written to the table!
+unsuccessfully-write = An error occurred while writing data to the table!
+successfully-update = The data in the table has been successfully updated!
+unsuccessfully-update = An error occurred while updating the data in the table!
+successfully-delete = One contact has been successfully deleted from the database table!
+unsuccessfully-delete = An error occurred while deleting a contact from the database table!
