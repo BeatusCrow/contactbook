@@ -1,1 +1,1 @@
-java -jar ContactBook.jar
+"java\bin\java.exe" -jar ContactBook.jar
