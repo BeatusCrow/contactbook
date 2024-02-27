@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ This method is responsible for creating an object on the screen that contains information about the contact in the database
+ */
 public class Row {
     private int id;
     private String name = null;
@@ -20,6 +23,8 @@ public class Row {
     private String tgLink = null;
     private String vkLink = null;
 
+    /* The general constructor. I don't see any point in creating different constructors, because you can just pass null values for some arguments.
+       This will not affect their storage in the database, because there is no limit on the null value */
     public Row(int id, String name, String telephoneNumber, String emailAddress, String tgLink, String vkLink) {
         this.id = id;
         this.name = name;
@@ -29,7 +34,7 @@ public class Row {
         this.vkLink = vkLink;
     }
 
-    public int getId() {return id;}
+    public int getId() {return id;} // in general, it was possible to do without them
     public String getName() {return name;}
     public String getTelephoneNumber() {return telephoneNumber;}
     public String getEmailAddress() {return emailAddress;}
